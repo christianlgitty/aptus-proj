@@ -1,9 +1,16 @@
 import { Link } from "expo-router";
 import { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import EventCard from "../components/EventCard";
 import Screen from "../components/screen";
 import { mockEvents } from "../lib/mockEvents";
+import { theme } from "../lib/theme";
 import { Event } from "../lib/types";
 
 const FILTERS: Array<"All" | Event["sport"]> = [
@@ -81,15 +88,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     marginBottom: 12,
+    color: theme.colors.textPrimary,
   },
   filters: {
-    marginBottom: 16,
+    marginBottom: theme.spacing.md,
   },
   filterPill: {
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 16,
     borderWidth: 1,
+    borderColor: theme.colors.border,
     marginRight: 8,
   },
   activeFilterPill: {
@@ -97,11 +106,13 @@ const styles = StyleSheet.create({
   },
   filterText: {
     fontSize: 14,
+    color: theme.colors.textSecondary,
   },
   activeFilterText: {
     fontWeight: "600",
+    color: theme.colors.textPrimary,
   },
   list: {
-    marginTop: 8,
+    marginTop: theme.spacing.sm,
   },
 });

@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { theme } from "../lib/theme";
 
 type EventCardProps = {
   name: string;
@@ -26,23 +27,28 @@ export default function EventCard({
 
 const styles = StyleSheet.create({
   card: {
-    padding: 16,
-    borderRadius: 8,
+    padding: theme.spacing.md,
+    borderRadius: theme.radius.md,
     borderWidth: 1,
-    marginBottom: 12,
+    borderColor: theme.colors.border,
+    backgroundColor: theme.colors.surface,
+    marginBottom: theme.spacing.sm,
   },
   meta: {
     fontSize: 12,
     letterSpacing: 0.5,
     textTransform: "uppercase",
     marginBottom: 4,
+    color: theme.colors.textSecondary,
   },
   name: {
     fontSize: 16,
     fontWeight: "600",
     marginBottom: 4,
+    color: theme.colors.textPrimary,
   },
   details: {
     fontSize: 14,
+    color: theme.colors.textSecondary,
   },
 });
