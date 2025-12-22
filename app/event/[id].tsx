@@ -1,13 +1,14 @@
 import { useLocalSearchParams } from "expo-router";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+import Screen from "../../components/screen";
 
 export default function EventDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
 
   return (
-    <View>
+    <Screen>
       <Text>Event Detail</Text>
       <Text>{id}</Text>
-    </View>
+    </Screen>
   );
 }

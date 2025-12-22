@@ -1,5 +1,6 @@
 import { Link } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text } from "react-native";
+import Screen from "../components/screen";
 
 const EVENTS = [
   { id: "boston-marathon", name: "Boston Marathon" },
@@ -8,7 +9,7 @@ const EVENTS = [
 
 export default function Search() {
   return (
-    <View>
+    <Screen>
       <Text>Search</Text>
 
       {EVENTS.map((event) => (
@@ -18,6 +19,6 @@ export default function Search() {
           </Pressable>
         </Link>
       ))}
-    </View>
+    </Screen>
   );
 }
