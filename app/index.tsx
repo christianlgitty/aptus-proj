@@ -1,17 +1,58 @@
 import { Link } from "expo-router";
-import { Pressable, Text } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import EventCard from "../components/EventCard";
 import Screen from "../components/screen";
+import { mockEvents } from "../lib/mockEvents";
 
 export default function Home() {
+  const featuredEvents = mockEvents.slice(0, 3);
+
   return (
     <Screen>
-      <Text>Aptus Home</Text>
+      <Text style={styles.title}>Aptus</Text>
+      <Text style={styles.subtitle}>
+        Discover endurance events across sports
+      </Text>
+
+      <View style={styles.section}>
+        {featuredEvents.map((event) => (
+          <Link key={event.id} href={`/event/${event.id}`} asChild>
+            <Pressable>
+              <EventCard
+                name={event.name}
+                location={event.location}
+                date={event.date}
+                sport={event.sport}
+              />
+            </Pressable>
+          </Link>
+        ))}
+      </View>
 
       <Link href="/search" asChild>
         <Pressable>
-          <Text>Go to Search</Text>
+          <Text style={styles.cta}>Browse all events →</Text>
         </Pressable>
       </Link>
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 22,
+    fontWeight: "600",
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 14,
+    marginBottom: 16,
+  },
+  section: {
+    marginBottom: 16,
+  },
+  cta: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+});
