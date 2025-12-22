@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import EventCard from "../components/EventCard";
 import Screen from "../components/screen";
 import { mockEvents } from "../lib/mockEvents";
+import { theme } from "../lib/theme";
 
 export default function Home() {
   const featuredEvents = mockEvents.slice(0, 3);
@@ -43,16 +44,19 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "600",
     marginBottom: 4,
+    color: theme.colors.textPrimary,
   },
   subtitle: {
     fontSize: 14,
-    marginBottom: 16,
+    marginBottom: theme.spacing.md,
+    color: theme.colors.textSecondary,
   },
   section: {
-    marginBottom: 16,
+    marginBottom: theme.spacing.md,
   },
   cta: {
     fontSize: 16,
     fontWeight: "600",
+    color: theme.colors.textPrimary,
   },
 });

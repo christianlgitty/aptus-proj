@@ -1,17 +1,14 @@
-import { ReactNode } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
+import { theme } from "../lib/theme";
 
-type ScreenProps = {
-  children: ReactNode;
-};
-
-export default function Screen({ children }: ScreenProps) {
+export default function Screen({ children }: { children: React.ReactNode }) {
   return <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
     flex: 1,
+    backgroundColor: theme.colors.background,
+    padding: theme.spacing.md,
   },
 });
