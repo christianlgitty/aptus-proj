@@ -30,11 +30,29 @@ export default function Home() {
         ))}
       </View>
 
-      <Link href="/search" asChild>
-        <Pressable>
-          <Text style={styles.cta}>Browse all events →</Text>
-        </Pressable>
-      </Link>
+      <View style={styles.buttonGroup}>
+        <Link href="/search" asChild>
+          <Pressable
+            style={({ pressed }) => [
+              styles.button,
+              pressed && styles.buttonPressed,
+            ]}
+          >
+            <Text style={styles.buttonText}>Browse all events</Text>
+          </Pressable>
+        </Link>
+
+        <Link href="/feed" asChild>
+          <Pressable
+            style={({ pressed }) => [
+              styles.button,
+              pressed && styles.buttonPressed,
+            ]}
+          >
+            <Text style={styles.buttonText}>Open activity feed</Text>
+          </Pressable>
+        </Link>
+      </View>
     </Screen>
   );
 }
@@ -54,9 +72,30 @@ const styles = StyleSheet.create({
   section: {
     marginBottom: theme.spacing.md,
   },
-  cta: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: theme.colors.textPrimary,
+
+  buttonGroup: {
+    marginTop: 10,
+    gap: 12,
   },
+button: {
+  backgroundColor: "#111827",
+  borderWidth: 3,
+  borderColor: "#00E5FF",
+  paddingVertical: 14,
+  paddingHorizontal: 16,
+  borderRadius: 14,
+  alignItems: "center",
+  marginTop: 12,
+},
+
+buttonPressed: {
+  backgroundColor: "#1F2937",
+  opacity: 0.7,
+},
+
+buttonText: {
+  color: "#FFFFFF",
+  fontSize: 16,
+  fontWeight: "700",
+},
 });
