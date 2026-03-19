@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import Screen from "../components/screen";
 import { theme } from "../lib/theme";
@@ -54,6 +55,12 @@ export default function Feed() {
         Follow race-day moments and fresh fitness results from your community.
       </Text>
 
+      <Link href="/create-post" asChild>
+        <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
+         <Text style={styles.buttonText}>+ Create Post</Text>
+        </Pressable>
+    </Link>
+        
       <ScrollView
         style={styles.feedList}
         contentContainerStyle={styles.feedContent}
@@ -182,4 +189,24 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "500",
   },
+button: {
+  backgroundColor: "#111827",
+  borderWidth: 2,
+  borderColor: "#00E5FF",
+  paddingVertical: 12,
+  paddingHorizontal: 16,
+  borderRadius: 12,
+  alignItems: "center",
+  marginTop: 12,
+  marginBottom: 16,
+},
+buttonPressed: {
+  backgroundColor: "#1F2937",
+  opacity: 0.8,
+},
+buttonText: {
+  color: "#FFFFFF",
+  fontSize: 15,
+  fontWeight: "700",
+}, 
 });
