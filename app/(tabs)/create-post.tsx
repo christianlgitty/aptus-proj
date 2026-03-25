@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
-import Screen from "../components/screen";
+import Screen from "../../components/screen";
 
 export default function CreatePost() {
   const [caption, setCaption] = useState("");

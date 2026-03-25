@@ -1,11 +1,11 @@
 import { Link } from "expo-router";
 import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import EventCard from "../components/EventCard";
-import Screen from "../components/screen";
-import { mockEvents } from "../lib/mockEvents";
-import { theme } from "../lib/theme";
-import { Event } from "../lib/types";
+import EventCard from "../../components/EventCard";
+import Screen from "../../components/screen";
+import { mockEvents } from "../../lib/mockEvents";
+import { theme } from "../../lib/theme";
+import { Event } from "../../lib/types";
 
 const SPORT_FILTERS: Array<"All" | Event["sport"]> = [
   "All",

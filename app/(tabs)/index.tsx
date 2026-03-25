@@ -9,10 +9,10 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import EventCard from "../components/EventCard";
-import Screen from "../components/screen";
-import { mockEvents } from "../lib/mockEvents";
-import { theme } from "../lib/theme";
+import EventCard from "../../components/EventCard";
+import Screen from "../../components/screen";
+import { mockEvents } from "../../lib/mockEvents";
+import { theme } from "../../lib/theme";
 
 const HERO_ITEMS = [
   { emoji: "🚴", label: "CYCLING" },
