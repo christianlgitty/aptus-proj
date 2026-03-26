@@ -10,6 +10,7 @@ type EventDetailData = {
   price: string;
   registrationStatus: string;
   officialSite?: string;
+  registrationUrl?: string;
 };
 
 const MOCK_EVENTS: Record<string, EventDetailData> = {
@@ -21,6 +22,7 @@ const MOCK_EVENTS: Record<string, EventDetailData> = {
     price: "$250",
     registrationStatus: "Closed",
     officialSite: "https://www.baa.org/races/boston-marathon",
+    registrationUrl: "https://www.baa.org/races/boston-marathon/enter",
   },
   "nyc-marathon": {
     title: "New York City Marathon",
@@ -30,6 +32,7 @@ const MOCK_EVENTS: Record<string, EventDetailData> = {
     price: "$295",
     registrationStatus: "Lottery Open",
     officialSite: "https://www.nyrr.org/tcsnycmarathon",
+    registrationUrl: "https://www.nyrr.org/tcsnycmarathon/runners/entry",
   },
   "ironman-kona": {
     title: "Ironman World Championship",
@@ -39,6 +42,7 @@ const MOCK_EVENTS: Record<string, EventDetailData> = {
     price: "$1,250",
     registrationStatus: "Qualification Required",
     officialSite: "https://www.ironman.com/im-world-championship-kona",
+    registrationUrl: "https://www.ironman.com/register",
   },
   "unbound-gravel": {
     title: "Unbound Gravel",
@@ -48,6 +52,7 @@ const MOCK_EVENTS: Record<string, EventDetailData> = {
     price: "$360",
     registrationStatus: "Open",
     officialSite: "https://www.unboundgravel.com",
+    registrationUrl: "https://www.unboundgravel.com/register",
   },
 };
 
@@ -69,9 +74,22 @@ export default function EventDetail() {
     );
   }
 
+  const hasValidOfficialSite =
+    !!event.officialSite &&
+    !event.officialSite.includes("example.com") &&
+    !event.officialSite.includes("placeholder");
+
+  const registrationLink = event.registrationUrl ?? event.officialSite;
+
   const openOfficialSite = () => {
     if (event.officialSite) {
       Linking.openURL(event.officialSite);
+    }
+  };
+
+  const openRegistration = () => {
+    if (hasValidOfficialSite && registrationLink) {
+      Linking.openURL(registrationLink);
     }
   };
 
@@ -106,6 +124,23 @@ export default function EventDetail() {
             disabled={!event.officialSite}
           >
             <Text style={styles.secondaryButtonText}>Open Official Site</Text>
+          </Pressable>
+        </View>
+
+        <View style={styles.bottomActionContainer}>
+          <Pressable
+            style={[
+              styles.primaryButton,
+              !hasValidOfficialSite && styles.secondaryButtonDisabled,
+            ]}
+            onPress={openRegistration}
+            disabled={!hasValidOfficialSite}
+          >
+            <Text style={styles.primaryButtonText}>
+              {hasValidOfficialSite
+                ? "Register for Race"
+                : "Registration Link Coming Soon"}
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -172,6 +207,10 @@ const styles = StyleSheet.create({
   actions: {
     gap: 10,
   },
+  bottomActionContainer: {
+    marginTop: "auto",
+    paddingTop: 20,
+  },
   primaryButton: {
     backgroundColor: "#2563EB",
     borderRadius: 10,
@@ -218,4 +257,3 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
 });
-
