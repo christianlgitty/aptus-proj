@@ -1,6 +1,6 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import Screen from "../components/screen";
-import { theme } from "../lib/theme";
+import Screen from "../../components/screen";
+import { theme } from "../../lib/theme";
 
 const HAS_SAVED_EVENTS = false;
 const ACCENT_BLUE = "#3B82F6";

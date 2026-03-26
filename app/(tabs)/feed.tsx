@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import Screen from "../components/screen";
-import { theme } from "../lib/theme";
+import Screen from "../../components/screen";
+import { theme } from "../../lib/theme";
 
 type FeedPost = {
   id: string;
