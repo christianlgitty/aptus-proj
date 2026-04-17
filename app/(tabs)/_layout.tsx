@@ -46,6 +46,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="feed" options={{ title: "Feed" }} />
       <Tabs.Screen name="create-post" options={{ title: "Post" }} />
       <Tabs.Screen name="saved" options={{ title: "Saved" }} />
+      <Tabs.Screen name="profile" options={{ title: "Profile" }} />
     </Tabs>
   );
 }
